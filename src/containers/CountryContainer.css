@@ -1,0 +1,12 @@
+/* Add this to your CSS file */
+.lists-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .list {
+    flex: 0 0 48%;
+  }
+  
+
+  
