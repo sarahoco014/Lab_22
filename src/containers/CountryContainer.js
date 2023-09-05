@@ -7,7 +7,6 @@ const CountryContainer = () => {
   const [countries, setCountries] = useState([]);
   const [visitedCountries, setVisitedCountries] = useState([]);
 
-  // Fetching data from API
   const loadData = async () => {
     try {
       const response = await fetch("https://restcountries.com/v3.1/all");
@@ -18,30 +17,26 @@ const CountryContainer = () => {
     }
   };
 
-  // Loads data when component mounts
   useEffect(() => {
     loadData();
   }, []);
 
-  // Marks country as visited
   const moveFromAllToVisited = (country) => {
     setVisitedCountries((prevVisitedCountries) => [
       ...prevVisitedCountries,
       country,
     ]);
-    // Removes country from All Countries
+
     setCountries((prevCountries) =>
       prevCountries.filter((c) => c.cca3 !== country.cca3)
     );
   };
 
-  // Remove country from Visited Countries
   const removeFromVisited = (country) => {
     const updatedVisitedCountries = visitedCountries.filter(
       (visitedCountry) => visitedCountry.cca3 !== country.cca3
     );
     setVisitedCountries(updatedVisitedCountries);
-    // Add removed country back into All Countries
     setCountries((prevCountries) => [...prevCountries, country]);
   };
 
