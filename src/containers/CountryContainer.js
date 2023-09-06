@@ -24,7 +24,7 @@ const CountryContainer = () => {
   const moveFromAllToVisited = (country) => {
     setVisitedCountries((prevVisitedCountries) => [
       ...prevVisitedCountries,
-      country,
+      country
     ]);
 
     setCountries((prevCountries) =>
@@ -33,10 +33,10 @@ const CountryContainer = () => {
   };
 
   const removeFromVisited = (country) => {
-    const updatedVisitedCountries = visitedCountries.filter(
+    setVisitedCountries((prevVisitedCountries) => prevVisitedCountries.filter(
       (visitedCountry) => visitedCountry.cca3 !== country.cca3
-    );
-    setVisitedCountries(updatedVisitedCountries);
+    ));
+    
     setCountries((prevCountries) => [...prevCountries, country]);
   };
 
